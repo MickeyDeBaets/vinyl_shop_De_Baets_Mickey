@@ -16,7 +16,9 @@
 //    return 'The Vinyl Shop';
 //});
 Route::view('/', 'home');
-
+Route::get('shop', 'ShopController@index');
+Route::get('shop_alt', 'ShopControllerAlt@index');
+Route::get('shop/{id}', 'ShopController@show');
 Route::get('contact-us', function () {
     //return 'Contact info';
     return view('contact');
