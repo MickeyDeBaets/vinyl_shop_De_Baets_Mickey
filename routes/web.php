@@ -15,14 +15,15 @@
 //    //return view('welcome');
 //    return 'The Vinyl Shop';
 //});
+Auth::routes();
+Route::get('logout', 'Auth\LoginController@logout');
 Route::view('/', 'home');
 Route::get('shop', 'ShopController@index');
 Route::get('shop_alt', 'ShopControllerAlt@index');
 Route::get('shop/{id}', 'ShopController@show');
-Route::get('contact-us', function () {
-    //return 'Contact info';
-    return view('contact');
-});
+Route::view('contact-us', 'contact');
+Route::get('contact-us', 'ContactUsController@show');
+Route::post('contact-us', 'ContactUsController@sendEmail');
 //Old Version
 //Route::get( 'admin/records', function (){
 //    $records = [
@@ -36,7 +37,9 @@ Route::get('contact-us', function () {
 //});
 
 // New version with prefix and group
-Route::prefix('admin')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::redirect('/', 'records');
     Route::get('records', 'Admin\RecordController@index');
 });
+
+
