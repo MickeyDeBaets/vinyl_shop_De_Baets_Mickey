@@ -39,6 +39,7 @@
                                 <button type="button" class="btn btn-outline-danger"
                                         data-toggle="tooltip"
                                         data-records="{{ $genre->records_count }}"
+                                        data-genre="{{ $genre->name }}"
                                         title="Delete {{ $genre->name }}">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
@@ -56,9 +57,10 @@
         $(function () {
             $('.deleteForm button').click(function () {
                 let records = $(this).data('records');
-                let msg = `Delete the genre '{{ $genre->name }}' ?`;
+                let genre = $(this).data('genre');
+                let msg = `Delete the genre '${genre}' ?`;
                 if (records > 0) {
-                    msg += `\nThe ${records} records of the genre '{{ $genre->name }}' will also be deleted!`
+                    msg += `\nThe ${records} records of the genre '${genre}' will also be deleted!`
                 }
                 if(confirm(msg)) {
                     $(this).closest('form').submit();
