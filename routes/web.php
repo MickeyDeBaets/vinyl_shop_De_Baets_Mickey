@@ -39,7 +39,17 @@ Route::post('contact-us', 'ContactUsController@sendEmail');
 // New version with prefix and group
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::redirect('/', 'records');
+    Route::resource('genres', 'Admin\GenreController');
     Route::get('records', 'Admin\RecordController@index');
+
 });
 
+//user
+Route::redirect('user', '/user/profile');
+Route::middleware(['auth'])->prefix('user')->group(function () {
+    Route::get('profile', 'User\ProfileController@edit');
+    Route::post('profile', 'User\ProfileController@update');
+    Route::get('password', 'User\PasswordController@edit');
+    Route::post('password', 'User\PasswordController@update');
+});
 
