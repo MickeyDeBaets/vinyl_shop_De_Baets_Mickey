@@ -4,3 +4,7 @@ main {
 .cardShopMaster {
     cursor: pointer;
 }
+
+.btn[disabled] {
+    cursor: not-allowed;
+}
