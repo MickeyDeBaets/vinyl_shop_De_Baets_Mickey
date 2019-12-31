@@ -30,11 +30,11 @@ class UserController extends Controller
        }
         if ($sorting == "email_AZ"){
             $sortBy = "email";
-            $sortOrder = "desc";
-       }
-        if ($sorting == "email_AZ"){
-            $sortBy = "email";
             $sortOrder = "asc";
+       }
+        if ($sorting == "email_ZA"){
+            $sortBy = "email";
+            $sortOrder = "desc";
        }
         if ($sorting == "active"){
             $sortBy = "active";
