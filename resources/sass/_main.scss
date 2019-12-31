@@ -5,6 +5,17 @@ main {
     cursor: pointer;
 }
 
-.btn[disabled] {
+.btn[disabled], .btn-group[disabled] {
     cursor: not-allowed;
+}
+
+a[disabled] {
+    cursor: not-allowed;
+
+}
+a[disabled].btn-outline-success{
+    color: #38c172;
+    border-color: #38c172;
+    background-color: white;
+
 }
